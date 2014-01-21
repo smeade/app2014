@@ -1,5 +1,8 @@
 App2014::Application.routes.draw do
-  resources :clients
+
+  resources :clients do
+    resources :contacts
+  end
 
   resources :posts
 

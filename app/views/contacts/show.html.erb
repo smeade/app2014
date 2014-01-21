@@ -1,0 +1,32 @@
+<div class="page-header">
+  <%= link_to client_contacts_path(@client), :class => 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_client_contact_path(@client, @contact), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h2><%= display_name(@contact) %></h2>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>First name:</dt>
+  <dd><%= @contact.first_name %></dd>
+
+  <dt>Last name:</dt>
+  <dd><%= @contact.last_name %></dd>
+
+  <dt>Title:</dt>
+  <dd><%= @contact.title %></dd>
+
+  <dt>Email:</dt>
+  <dd><%= @contact.email %></dd>
+
+  <dt>Phone:</dt>
+  <dd><%= @contact.phone %></dd>
+
+  <dt>Fax:</dt>
+  <dd><%= @contact.fax %></dd>
+
+</dl>

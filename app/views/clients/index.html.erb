@@ -3,7 +3,7 @@
     <span class="glyphicon glyphicon-plus"></span>
     New Client
   <% end %>
-  <h1>Listing clients</h1>
+  <h1>Clients</h1>
 </div>
 
 <div class="table-responsive">
@@ -20,13 +20,26 @@
     </thead>
 
     <tbody>
-      <%= content_tag_for(:tr, @clients) do |client| %>
-        <td><%= client.name %></td>
-        <td><%= client.address %></td>
-        <td><%= client.active %></td>
-        <td><%= link_to 'Show', client %></td>
-        <td><%= link_to 'Edit', edit_client_path(client) %></td>
-        <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% @clients.each do |client| %>
+        <tr>
+          <td><%= client.name %></td>
+          <td><%= client.address %></td>
+          <td><%= client.active %></td>
+          <td><%= link_to '+ Contact', new_client_contact_path(client) %></td>
+          <td><%= link_to 'Edit', edit_client_path(client) %></td>
+          <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+        <% client.contacts.each do |contact| %>
+          <tr>
+            <td>
+            <td><%= full_name_and_email(contact) %></td>
+            <td></td>
+            <td></td>
+            <td><%= link_to 'Edit', edit_client_contact_path(client, contact) %></td>
+            <td><%= link_to 'Destroy', [client, contact], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+          </tr>
+        <% end %>
       <% end %>
     </tbody>
   </table>

@@ -1,0 +1,9 @@
+<div class="page-header">
+  <%= link_to clients_path, :class => 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <h2><%= display_name(@contact) %></h2>
+</div>
+
+<%= render 'form' %>
