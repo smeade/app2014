@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  client_id: 
+  name: MyString
+  code: MyString
+  billable: false
+  budget: 9.99
+  notes: MyText
+  active: false
+
+two:
+  client_id: 
+  name: MyString
+  code: MyString
+  billable: false
+  budget: 9.99
+  notes: MyText
+  active: false
