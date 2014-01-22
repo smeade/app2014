@@ -1,3 +1,3 @@
 class Client < ActiveRecord::Base
-  has_many :contacts
+  has_many :contacts, :dependent => :destroy
 end

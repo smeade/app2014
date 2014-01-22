@@ -1,0 +1,35 @@
+<div class="page-header">
+  <%= link_to new_task_path, :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Task
+  <% end %>
+  <h1>Tasks</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Hourly rate</th>
+        <th>Billable</th>
+        <th>Common</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @tasks) do |task| %>
+        <td><%= task.name %></td>
+        <td><%= number_to_currency(task.hourly_rate) %></td>
+        <td><%= task.billable %></td>
+        <td><%= task.common %></td>
+        <td><%= link_to 'Show', task %></td>
+        <td><%= link_to 'Edit', edit_task_path(task) %></td>
+        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

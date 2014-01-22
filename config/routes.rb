@@ -1,5 +1,7 @@
 App2014::Application.routes.draw do
 
+  resources :tasks
+
   resources :clients do
     resources :contacts
   end

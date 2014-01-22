@@ -10,7 +10,7 @@ module ContactsHelper
 
   def full_name_and_email(contact)
     fnae = [contact.first_name, contact.last_name].join(" ")
-    fnae += "(#{contact.email})" unless contact.email.blank?
+    fnae += " (#{contact.email})" unless contact.email.blank?
     fnae
   end
 
