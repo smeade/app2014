@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 selectizeClient = ->
-  $("#project_client_id").selectize
+  $("#project_client_id_or_name").selectize
     create: true
     sortField: "text"
 

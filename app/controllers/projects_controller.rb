@@ -26,9 +26,6 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
 
-    # Create new client if client name (instead of numeric id) is passed in
-    @project.client = Client.find_or_create_by(name: project_params[:client_id]) if project_params[:client_id].to_i == 0
-
     respond_to do |format|
       if @project.save
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
@@ -72,6 +69,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:client_id, :name, :code, :billable, :budget, :notes, :active)
+      params.require(:project).permit(:client_id, :name, :code, :billable, :budget, :notes, :active, :client_id_or_name)
     end
 end
