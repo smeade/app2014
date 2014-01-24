@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140122152126) do
+ActiveRecord::Schema.define(version: 20140123205135) do
 
   create_table "clients", force: true do |t|
     t.string   "name"
@@ -34,6 +34,19 @@ ActiveRecord::Schema.define(version: 20140122152126) do
   end
 
   add_index "contacts", ["client_id"], name: "index_contacts_on_client_id", using: :btree
+
+  create_table "entries", force: true do |t|
+    t.date     "date"
+    t.integer  "minutes"
+    t.integer  "project_id"
+    t.text     "description"
+    t.text     "journal"
+    t.boolean  "billable",    default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "entries", ["project_id"], name: "index_entries_on_project_id", using: :btree
 
   create_table "posts", force: true do |t|
     t.string   "title"

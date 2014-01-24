@@ -1,0 +1,4 @@
+$(".form-control").val("");
+$("#entry_project_id")[0].selectize.clear()
+$("#entry_minutes").focus();
+$("<%= escape_javascript(render @entry) %>").prependTo("#entries-rows");

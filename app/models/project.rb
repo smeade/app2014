@@ -1,5 +1,6 @@
 class Project < ActiveRecord::Base
   belongs_to :client
+  has_many :entries
 
   # Public: sets client based on either a client_id or client name
   #

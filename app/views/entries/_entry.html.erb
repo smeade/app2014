@@ -1,0 +1,6 @@
+<tr>
+  <td class="col-sm-2"><%= entry.minutes %></td>
+  <td class="col-sm-4"><%= entry.project.name unless entry.project.blank? %></td>
+  <td class="col-sm-4"><%= entry.description %></td>
+  <td class="col-sm-2"><%= link_to 'Edit', edit_entry_path(entry) %></td>
+</tr>

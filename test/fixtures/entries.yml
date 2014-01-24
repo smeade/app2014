@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2014-01-23
+  minutes: 1
+  project_id: 
+  description: MyText
+  journal: MyText
+  billable: false
+
+two:
+  date: 2014-01-23
+  minutes: 1
+  project_id: 
+  description: MyText
+  journal: MyText
+  billable: false
