@@ -1,0 +1,22 @@
+<div class="row" id="daily-dashboard">
+  <div class="col-sm-4">
+    <h4>Billable</h4>
+    <h1><%= number_with_precision(Entry.billable.sum(:minutes)/60.0, precision: 2) %></h1>
+    <p>hours</p>
+    <b><%= number_to_currency(Entry.billable.sum(:minutes)/60.0 * 110) %></b>
+  </div>
+  <div class="col-sm-4">
+    <h4>Bootstrapping</h4>
+    <h1><%= number_with_precision(Entry.bootstrapping.sum(:minutes)/60.0, precision: 2) %></h1>
+    <p>hours</p>
+    <%= number_to_currency(Entry.bootstrapping.sum(:minutes)/60.0 * 110) %><br/>
+    <b>Streak: <%= pluralize Entry.streak_days, 'day' %>!</b>
+  </div>
+  <div class="col-sm-4">
+    <h4>Other</h4>
+    <h1><%= number_with_precision(Entry.other.sum(:minutes)/60.0, precision: 2) %></h1>
+    <p>hours</p>
+    <b><%= number_to_currency(Entry.other.sum(:minutes)/60.0 * 110) %></b>
+    <p>Month: $</p>
+  </div>
+</div>

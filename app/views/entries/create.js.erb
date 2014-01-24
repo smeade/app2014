@@ -1,4 +1,9 @@
-$(".form-control").val("");
-$("#entry_project_id")[0].selectize.clear()
-$("#entry_minutes").focus();
-$("<%= escape_javascript(render @entry) %>").prependTo("#entries-rows");
+<% if @entry.new_record? %>
+  $("#form-container").html("<%= escape_javascript(render :partial => 'inline_form') %>");
+  $("#daily-dashboard").replaceWith("<%= escape_javascript(render :partial => 'daily_dashboard') %>");
+  $("<%= escape_javascript(render @created_entry) %>").prependTo("#entries-rows");
+  window.reset_page()  
+<% else %>
+  $("#form-container").html("<%= escape_javascript(render :partial => 'inline_form') %>");
+  window.reset_page()
+<% end %>

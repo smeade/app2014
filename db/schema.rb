@@ -41,7 +41,8 @@ ActiveRecord::Schema.define(version: 20140123205135) do
     t.integer  "project_id"
     t.text     "description"
     t.text     "journal"
-    t.boolean  "billable",    default: true
+    t.boolean  "billable",      default: true
+    t.boolean  "bootstrapping", default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

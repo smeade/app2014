@@ -25,12 +25,15 @@ class EntriesController < ApplicationController
   # POST /entries
   # POST /entries.json
   def create
-    @entry = Entry.new(entry_params)
+    @entry = Entry.new(entry_params, date: Date.today())
 
     respond_to do |format|
       if @entry.save
         format.html { redirect_to @entry, notice: 'Entry was successfully created.' }
-        format.js   {}
+        format.js   { 
+          @created_entry = @entry
+          @entry = Entry.new unless @entry.minutes.blank? 
+        }
         format.json { render action: 'show', status: :created, location: @entry }
       else
         format.html { render action: 'new' }
@@ -42,9 +45,18 @@ class EntriesController < ApplicationController
   # PATCH/PUT /entries/1
   # PATCH/PUT /entries/1.json
   def update
+    # When updating due to timer being stopped, calculate elapsed time
+    if params[:commit] == 'Stop'
+      @entry.minutes = (@entry.minutes || 0 ) + (Time.now() - @entry.updated_at).to_i / 60
+    end
+
     respond_to do |format|
       if @entry.update(entry_params)
         format.html { redirect_to @entry, notice: 'Entry was successfully updated.' }
+        format.js   { 
+          @updated_entry = @entry
+          @entry = Entry.new unless @entry.minutes.blank?           
+        }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -71,6 +83,6 @@ class EntriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def entry_params
-      params.require(:entry).permit(:date, :minutes, :project_id, :description, :journal, :billable)
+      params.require(:entry).permit(:id, :date, :minutes, :project_id, :description, :journal, :billable, :project_id_or_name)
     end
 end

@@ -7,7 +7,7 @@ class CreateEntries < ActiveRecord::Migration
       t.text :description
       t.text :journal
       t.boolean :billable, :default => true
-
+      t.boolean :bootstrapping, :default => false
       t.timestamps
     end
   end

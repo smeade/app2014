@@ -25,7 +25,7 @@
 
     <tbody>
       <%= content_tag_for(:tr, @projects) do |project| %>
-        <td><%= link_to project.client.name, edit_client_path(project.client) %></td>
+        <td><%= link_to project.client.name, edit_client_path(project.client) unless project.client.blank? %></td>
         <td><%= project.name %></td>
         <td><%= project.code %></td>
         <td><%= project.billable %></td>
