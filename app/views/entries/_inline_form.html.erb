@@ -4,7 +4,7 @@
       <% if @entry.new_record? %>
         <%= f.text_field :minutes, :class => "form-control", :placeholder => "time" %>
       <% else %>
-        <span id='clocking' data-starting-minutes='<%= @entry.elapsed_time %>' %>
+        <span id='clocking' data-starting-seconds='<%= @entry.elapsed_time %>' %>
           <%= image_tag "clock-spinner.gif", :id => 'clock-icon' %><span id="runner"></span>
         </span>
       <% end %>

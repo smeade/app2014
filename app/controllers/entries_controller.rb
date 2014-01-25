@@ -1,12 +1,10 @@
 class EntriesController < ApplicationController
   before_action :set_entry, only: [:show, :edit, :update, :destroy]
+  before_action :set_entries, only: [:index, :create]
 
   # GET /entries
   # GET /entries.json
   def index
-    @entries_today = Entry.complete.today
-    @entries_yesterday = Entry.complete.yesterday
-    @entries_with_journal_text = Entry.with_journal_text
     @entry = Entry.running.first || Entry.new
   end
 
@@ -82,6 +80,12 @@ class EntriesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_entry
       @entry = Entry.find(params[:id])
+    end
+
+    def set_entries
+      @entries_today = Entry.complete.today
+      @entries_yesterday = Entry.complete.yesterday
+      @entries_with_journal_text = Entry.with_journal_text      
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

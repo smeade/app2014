@@ -1,0 +1,50 @@
+// time entries
+.entry-save {
+  width: 100%;
+}
+
+.table.entries-table > tbody > tr > td {
+  padding-left: 29px;
+}
+
+.new-entry {
+  margin-bottom: 1em;
+}
+
+.dashboard {
+  text-align: center;
+}
+
+#clocking img {
+  float: left;
+  margin-top: 5px;
+}
+
+#runner {
+  float: left;
+  margin-left: .5em;
+  margin-top: 3px;
+  font-size: 150%;
+  font-weight: bold;
+}
+
+.edit-icon {
+  color: #999;
+}
+
+a.edit:hover {
+  text-decoration: none;
+}
+
+.delete-icon {
+  color: red;
+  padding-left: 10px;
+}
+
+.action {
+  display: none;
+}
+
+tr:hover .action {
+  display: inline;
+}
