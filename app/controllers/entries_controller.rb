@@ -4,8 +4,8 @@ class EntriesController < ApplicationController
   # GET /entries
   # GET /entries.json
   def index
-    @entries = Entry.all.order("date desc, created_at desc")
-    @entry = Entry.new
+    @entries = Entry.complete.order("date desc, created_at desc")
+    @entry = Entry.running.first || Entry.new
   end
 
   # GET /entries/1
@@ -32,7 +32,7 @@ class EntriesController < ApplicationController
         format.html { redirect_to @entry, notice: 'Entry was successfully created.' }
         format.js   { 
           @created_entry = @entry
-          @entry = Entry.new unless @entry.minutes.blank? 
+          @entry = Entry.new unless @entry.running
         }
         format.json { render action: 'show', status: :created, location: @entry }
       else
@@ -48,6 +48,7 @@ class EntriesController < ApplicationController
     # When updating due to timer being stopped, calculate elapsed time
     if params[:commit] == 'Stop'
       @entry.minutes = (@entry.minutes || 0 ) + (Time.now() - @entry.updated_at).to_i / 60
+      @entry.running = false
     end
 
     respond_to do |format|
@@ -55,7 +56,7 @@ class EntriesController < ApplicationController
         format.html { redirect_to @entry, notice: 'Entry was successfully updated.' }
         format.js   { 
           @updated_entry = @entry
-          @entry = Entry.new unless @entry.minutes.blank?           
+          @entry = Entry.new unless @entry.running
         }
         format.json { head :no_content }
       else

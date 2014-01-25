@@ -1,9 +1,10 @@
-<% if @entry.new_record? %>
+<% if @created_entry.running %>
+  $("#form-container").html("<%= escape_javascript(render :partial => 'inline_form') %>");
+  window.reset_page()
+  $('#runner').runner('start');
+<% else %>
   $("#form-container").html("<%= escape_javascript(render :partial => 'inline_form') %>");
   $("#daily-dashboard").replaceWith("<%= escape_javascript(render :partial => 'daily_dashboard') %>");
   $("<%= escape_javascript(render @created_entry) %>").prependTo("#entries-rows");
-  window.reset_page()  
-<% else %>
-  $("#form-container").html("<%= escape_javascript(render :partial => 'inline_form') %>");
   window.reset_page()
 <% end %>

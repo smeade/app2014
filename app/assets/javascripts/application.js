@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require bootstrap
 //= require selectize
+//= require jquery.runner
 //= require_tree .

@@ -61,6 +61,19 @@ section {
   text-align: center;
 }
 
+#clocking img {
+  float: left;
+  margin-top: 5px;
+}
+
+#runner {
+  float: left;
+  margin-left: .5em;
+  margin-top: 3px;
+  font-size: 150%;
+  font-weight: bold;
+}
+
 // set a max-width for horizontal fluid layout and make it centered 
 .container {
   margin-right: auto;
