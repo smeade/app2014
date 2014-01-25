@@ -5,15 +5,29 @@ class Entry < ActiveRecord::Base
   after_create :set_running
   after_create :set_date
 
+  default_scope { order('date desc, created_at desc') } 
+
   scope :bootstrapping, -> { where(bootstrapping: true) }
   scope :billable, -> { where(billable: true) }
   scope :complete, -> {where(running: false)}
   scope :for_date, ->(for_date) { where(:date => for_date) }
   scope :other, -> { where(billable: false, bootstrapping: false) }
   scope :running, -> {where(running: true)}
+  scope :today, -> {where(:date => Date.today)}
+  scope :yesterday, -> {where(:date => Date.today - 1)}
+  scope :with_journal_text, -> {where("journal > ''")}
 
   def elapsed_time
     Time.now - self.created_at
+  end
+
+  def is_first_of_all?
+    Entry.first == self
+  end
+
+  # Public: is this Entry the first one for the day
+  def is_first_for_day?
+    Entry.for_date(self.date).first == self
   end
 
   # Public: sets project based on either a project_id or project name

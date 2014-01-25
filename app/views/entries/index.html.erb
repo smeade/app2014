@@ -22,10 +22,74 @@
   <div class="table-responsive">
     <table class="table table-hover entries-table">
       <tbody id="entries-rows">
-        <% @entries.each do |entry| %>
+        <% @entries_today.each do |entry| %>
           <%= render entry %>
         <% end %>
       </tbody>
     </table>
   </div>
+
+  <h5>
+    Yesterday
+    <%= number_with_precision(Entry.billable.yesterday.sum(:minutes)/60.0, precision: 0) %> /
+    <%= number_with_precision(Entry.bootstrapping.yesterday.sum(:minutes)/60.0, precision: 0) %> /
+    <%= number_with_precision(Entry.other.yesterday.sum(:minutes)/60.0, precision: 0) %>
+  </h5>
+
+  <div class="table-responsive">
+    <table class="table table-hover entries-table">
+      <tbody id="entries-rows">
+        <% @entries_yesterday.each do |entry| %>
+          <%= render entry %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="container">
+    <div class="page-header">
+        <h1 id="timeline">Timeline</h1>
+    </div>
+    <ul class="timeline">
+      <% @entries_with_journal_text.in_groups_of(2).each do |entry1, entry2| %>
+        <li>
+          <div class="timeline-badge info">
+            <i class="glyphicon glyphicon-pencil"></i>
+          </div>
+          <div class="timeline-panel">
+            <div class="timeline-body">
+              <p><%= entry1.journal %></p>
+            </div>
+            <div class="timeline-heading">
+              <p>
+                <small class="text-muted"><i class="glyphicon glyphicon-time"></i>
+                  <%= entry1.date.strftime("%b %e") %>
+                </small>
+              </p>
+            </div>
+          </div>
+        </li>
+
+        <% if entry2 %>
+          <li class="timeline-inverted">
+            <div class="timeline-badge info">
+              <i class="glyphicon glyphicon-pencil"></i>
+            </div>
+            <div class="timeline-panel">
+              <div class="timeline-body">
+                <p><%= entry2.journal %></p>
+              </div>
+              <div class="timeline-heading">
+                <p>
+                  <small class="text-muted"><i class="glyphicon glyphicon-time"></i>
+                    <%= entry2.date.strftime("%b %e") %>
+                  </small>
+                </p>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
 </div>

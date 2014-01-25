@@ -4,7 +4,9 @@ class EntriesController < ApplicationController
   # GET /entries
   # GET /entries.json
   def index
-    @entries = Entry.complete.order("date desc, created_at desc")
+    @entries_today = Entry.complete.today
+    @entries_yesterday = Entry.complete.yesterday
+    @entries_with_journal_text = Entry.with_journal_text
     @entry = Entry.running.first || Entry.new
   end
 

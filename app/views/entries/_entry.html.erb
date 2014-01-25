@@ -1,3 +1,10 @@
+<% if entry.is_first_for_day? && !entry.is_first_of_all? %>
+  <tr class="first-for-day">
+    <td colspan="5">
+      <%= entry.date.strftime("%b %e") %>
+    </td>
+  </tr>
+<% end %>
 <tr>
   <td class="col-sm-2"><b><%= number_with_precision(entry.minutes / 60.0, precision: 2)  %></b></td>
   <td class="col-sm-4"><%= entry.project.name unless entry.project.blank? %></td>
@@ -5,5 +12,5 @@
   <td class="col-sm-2">
   	<%= link_to 'Edit', edit_entry_path(entry) %>
   	<%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } %>
-  	</td>
+  </td>
 </tr>
