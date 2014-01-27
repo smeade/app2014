@@ -86,7 +86,7 @@ class Entry < ActiveRecord::Base
     date = Date.today 
     while Entry.bootstrapping.for_date(date).size > 0 || date.wday == 0
       streak += 1
-      date += 1
+      date -= 1
     end
     streak
   end
