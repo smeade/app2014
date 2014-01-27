@@ -84,7 +84,7 @@ class Entry < ActiveRecord::Base
   def self.streak_days
     streak = 0
     date = Date.today 
-    while Entry.for_date(date).size > 0
+    while Entry.bootstrapping.for_date(date).size > 0 || date.wday == 0
       streak += 1
       date += 1
     end
