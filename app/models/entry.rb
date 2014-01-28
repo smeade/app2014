@@ -18,7 +18,7 @@ class Entry < ActiveRecord::Base
   scope :with_journal_text, -> {where("journal > ''")}
 
   def elapsed_time
-    Time.now - self.created_at
+    (self.minutes || 0 ) + (Time.now() - self.updated_at).to_i
   end
 
   def is_first_of_all?
