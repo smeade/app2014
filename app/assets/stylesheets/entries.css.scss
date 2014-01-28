@@ -1,5 +1,5 @@
 // time entries
-#daily-dashboard {
+#daily-dashboard-body {
   text-align: center;
 }
 
@@ -36,6 +36,11 @@
   color: #999;
 }
 
+.table > tbody > tr.entry > td {
+  height: 4em;
+  vertical-align: middle;
+}
+
 a.edit:hover {
   text-decoration: none;
 }
@@ -43,10 +48,16 @@ a.edit:hover {
 .delete-icon {
   color: red;
   padding-left: 10px;
+  margin-top: 8px;
 }
 
-.action {
+.action,
+.btn.action {
   display: none;
+}
+
+.restart {
+  float: right;
 }
 
 tr:hover .action {

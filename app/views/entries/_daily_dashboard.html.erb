@@ -1,12 +1,12 @@
-<div class="row panel panel-default">
+<div class="row panel panel-default" id="daily-dashboard">
   <div class="panel-heading">
     <div class="btn-group panel-title">
-      <button type="button" class="btn btn-default">Today</button>
+      <button type="button" class="btn btn-default active">Today</button>
       <button type="button" class="btn btn-default">Month</button>
       <button type="button" class="btn btn-default">Year</button>
     </div>
   </div>
-  <div class="panel-body" id="daily-dashboard">
+  <div class="panel-body" id="daily-dashboard-body">
     <div class="col-xs-4">
       <h4>Billable</h4>
       <h1><%= number_with_precision(Entry.billable.today.sum(:minutes)/60.0, precision: 2) %></h1>

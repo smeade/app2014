@@ -1,6 +1,10 @@
 App2014::Application.routes.draw do
 
-  resources :entries
+  resources :entries do
+    member do 
+      put 'restart'
+    end
+  end
 
   resources :projects
 

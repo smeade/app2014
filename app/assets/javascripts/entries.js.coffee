@@ -27,7 +27,6 @@ readyPage = ->
   else
     $('#runner').runner
       milliseconds: false
-  end
 
   # show/hide edit/delete links
   $("tr.entry").hover (->

@@ -78,6 +78,17 @@ class Entry < ActiveRecord::Base
     self.update_column(:date, Date.today)
   end
 
+  def start
+    self.running = true
+    self.save
+  end
+
+  def stop
+    self.minutes = (self.minutes || 0 ) + (Time.now() - self.updated_at).to_i / 60
+    self.running = false
+    self.save
+  end
+
   # Public: number of days backwards from today that has at least one Entry
   #
   # Returns: Integer streak length

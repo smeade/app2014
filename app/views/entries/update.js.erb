@@ -1,4 +1,4 @@
 $("#form-container").html("<%= escape_javascript(render :partial => 'inline_form') %>");
 $("#daily-dashboard").replaceWith("<%= escape_javascript(render :partial => 'daily_dashboard') %>");
 $("<%= escape_javascript(render @updated_entry) %>").prependTo("#entries-rows");
-window.reset_page()  
+window.reset_page();

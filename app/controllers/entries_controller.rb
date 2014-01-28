@@ -1,6 +1,6 @@
 class EntriesController < ApplicationController
-  before_action :set_entry, only: [:show, :edit, :update, :destroy]
-  before_action :set_entries, only: [:index, :create]
+  before_action :set_entry, only: [:show, :edit, :update, :destroy, :restart]
+  before_action :set_entries, only: [:index, :create, :restart]
 
   # GET /entries
   # GET /entries.json
@@ -40,6 +40,15 @@ class EntriesController < ApplicationController
         format.json { render json: @entry.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def restart
+    @entry_running = Entry.running.first
+    @entry_running.stop if @entry_running
+    
+    @entry.start
+
+    render :index
   end
 
   # PATCH/PUT /entries/1

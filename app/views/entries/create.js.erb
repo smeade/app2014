@@ -1,11 +1,15 @@
 <% if @created_entry.running %>
+  console.log("@created_entry.running");
   $("#form-container").html("<%= escape_javascript(render :partial => 'inline_form') %>");
   window.reset_page()
   $('#runner').runner('start');
+  console.log("@created_entry.running");
 <% else %>
+  console.log("!@created_entry.running");
   $("#form-container").html("<%= escape_javascript(render :partial => 'inline_form') %>");
   $("#daily-dashboard").replaceWith("<%= escape_javascript(render :partial => 'daily_dashboard') %>");
   $("#ul-timeline").html("<%= escape_javascript(render :partial => 'timeline_entries') %>");
   $("<%= escape_javascript(render @created_entry) %>").prependTo("#entries-rows");
+  console.log("!@created_entry.running");
   window.reset_page()
 <% end %>
