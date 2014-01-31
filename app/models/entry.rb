@@ -17,6 +17,13 @@ class Entry < ActiveRecord::Base
   scope :yesterday, -> {where(:date => Date.today - 1)}
   scope :with_journal_text, -> {where("journal > ''")}
 
+  scope :last_week, -> {where("date > ? and date < ?", (Date.today - 7).beginning_of_week, (Date.today - 7).end_of_week)}  
+  scope :this_week, -> {where("date > ?", Date.today.beginning_of_week) }
+
+  scope :last_month, -> {where("date > ? and date < ?", (Date.today - 1.month).beginning_of_month, (Date.today - 1.month).end_of_month)}  
+  scope :this_month, -> {where("date > ?", Date.today.beginning_of_month) }
+
+
   def elapsed_time
     (self.minutes || 0 ) + (Time.now() - self.updated_at).to_i
   end

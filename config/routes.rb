@@ -1,5 +1,7 @@
 App2014::Application.routes.draw do
 
+  resource :dashboard
+
   resources :entries do
     member do 
       put 'restart'
