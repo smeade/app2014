@@ -6,6 +6,8 @@ App2014::Application.routes.draw do
     end
   end
 
+  resources :graphs
+
   resources :projects
 
   resources :tasks
