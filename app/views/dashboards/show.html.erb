@@ -92,13 +92,13 @@
   </div>
 
   <div class="col-xs-4">
-    <div class="panel panel-info">
+    <div class="panel panel-info" style="height: 152px;">
       <div class="panel-heading">
         <h3 class="panel-title">Goals</h3>
       </div>
       <div class="panel-body">
         <p class="text-muted">
-          Track progress toward goals.<br/>(coming soon)
+          Track progress toward goals (soon).
         </p>
         <div class="progress">
           <div class="progress-bar progress-bar-success" style="width: 35%">
@@ -113,6 +113,18 @@
         </div>
       </div>
     </div>    
+
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">Pulse</h3>
+      </div>
+      <div class="panel-body">
+        <table class="table" style="font-size: 50%;">
+          <%= render :partial => 'graphs/two_week_streak.html.erb' %>
+        </table>
+      </div>
+    </div>    
+
   </div>
 </div>
 
