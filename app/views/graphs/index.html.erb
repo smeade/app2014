@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1>Streaks</h1>
+  <h1 id="title" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">Streaks</h1>
 </div>
 
 <table class="table">
@@ -14,13 +14,13 @@
       <th>Sun</th>
     </tr>
   </thead>
-  <% @streak_class = 'streak-icon' %>
-  <tbody>
+
+  <tbody class="streak-days">
     <tr>
     	<% ((Date.today-21).beginning_of_week() .. (Date.today-21).end_of_week()).each do |date| %>
       	<td>
       		<% if any_entries_for_day?(date) %>
-      			<span class="glyphicon glyphicon-ok-circle <%= class_day_in_current_streak?(date) %>" style="font-size: 200%;"></span>
+      			<span class="glyphicon glyphicon-ok-circle <%= class_day_in_current_streak?(date) %> popoverable" style="font-size: 200%; margin-left: 5px;" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="top" data-html="true" data-title="<%= date.to_s(:long) %>" data-content="Bootstrapping hours: <%= hours_for_day_bootstrapping(date) %><br/>Billable hours: <%= hours_for_day_billable(date) %>"></span>
       		<% else %>
       			&nbsp;
       		<% end %>
@@ -31,7 +31,7 @@
     	<% ((Date.today-14).beginning_of_week() .. (Date.today-14).end_of_week()).each do |date| %>
       	<td>
       		<% if any_entries_for_day?(date) %>
-      			<span class="glyphicon glyphicon-ok-circle <%= class_day_in_current_streak?(date) %>" style="font-size: 200%;"></span>
+      			<span class="glyphicon glyphicon-ok-circle <%= class_day_in_current_streak?(date) %> popoverable" style="font-size: 200%; margin-left: 5px;" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="top" data-html="true" data-title="<%= date.to_s(:long) %>" data-content="Bootstrapping hours: <%= hours_for_day_bootstrapping(date) %><br/>Billable hours: <%= hours_for_day_billable(date) %>"></span>
       		<% else %>
       			&nbsp;
       		<% end %>
@@ -42,7 +42,7 @@
     	<% ((Date.today-7).beginning_of_week() .. (Date.today-7).end_of_week()).each do |date| %>
       	<td>
       		<% if any_entries_for_day?(date) %>
-      			<span class="glyphicon glyphicon-ok-circle <%= class_day_in_current_streak?(date) %>" style="font-size: 200%;"></span>
+      			<span class="glyphicon glyphicon-ok-circle <%= class_day_in_current_streak?(date) %> popoverable" style="font-size: 200%; margin-left: 5px;" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="top" data-html="true" data-title="<%= date.to_s(:long) %>" data-content="Bootstrapping hours: <%= hours_for_day_bootstrapping(date) %><br/>Billable hours: <%= hours_for_day_billable(date) %>"></span>
       		<% else %>
       			&nbsp;
       		<% end %>
@@ -53,7 +53,7 @@
     	<% (Date.today.beginning_of_week() .. Date.today).each do |date| %>
       	<td>
       		<% if any_entries_for_day?(date) %>
-      			<span class="glyphicon glyphicon-ok-circle <%= class_day_in_current_streak?(date) %>" style="font-size: 200%;"></span>
+      			<span class="glyphicon glyphicon-ok-circle <%= class_day_in_current_streak?(date) %> popoverable" style="font-size: 200%; margin-left: 5px;" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="top" data-html="true" data-title="<%= date.to_s(:long) %>" data-content="Bootstrapping hours: <%= hours_for_day_bootstrapping(date) %><br/>Billable hours: <%= hours_for_day_billable(date) %>"></span>
       		<% else %>
       			&nbsp;
       		<% end %>
