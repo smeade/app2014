@@ -1,5 +1,6 @@
 App2014::Application.routes.draw do
 
+  devise_for :users
   resource :dashboard
 
   resources :entries do

@@ -31,6 +31,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 gem 'bootstrap-sass'
+gem 'devise'
 gem 'font-awesome-sass'
 gem 'high_voltage'
 
