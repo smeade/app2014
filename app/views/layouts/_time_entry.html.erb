@@ -1,0 +1,43 @@
+<div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+          Enter Time <span class="caret"></span>
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse">
+      <div class="panel-body">
+        <div id="form-container">
+          <%= form_for(@entry, remote: true, :html => { :class => "" }) do |f| %>
+            <div class="row new-entry">
+              <div class="form-group col-xs-2">
+                <% if @entry.new_record? %>
+                  <%= f.text_field :minutes, :class => "form-control", :placeholder => "time" %>
+                <% else %>
+                  <span id='clocking' data-starting-seconds='<%= @entry.elapsed_time %>' %>
+                    <%= image_tag "clock-spinner.gif", :id => 'clock-icon' %><span id="runner"></span>
+                  </span>
+                <% end %>
+              </div>
+              <div class="form-group col-xs-4">
+                <%= f.select :project_id_or_name, options_from_collection_for_select(Project.all, :id, :name, :selected => @entry.project_id_or_name ), {:prompt => "Select or create a project..."} %>
+              </div>
+              <div class="form-group col-xs-4">
+                <%= f.text_field :description, :class => "form-control", :placeholder => "description" %>
+              </div>
+              <div class="form-group col-xs-2">
+                <% if @entry.new_record? %>
+                  <%= f.submit :class => "btn btn-primary entry-save", :value => "Save" %>
+                <% else %>
+                  <%= f.submit :class => "btn btn-primary entry-save", :value => "Stop" %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

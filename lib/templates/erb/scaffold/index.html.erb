@@ -3,7 +3,7 @@
     <span class="glyphicon glyphicon-plus"></span>
     New <%= human_name %>
   <%% end %>
-  <h1><%= plural_table_name.titleize %></h1>
+  <h1>Listing <%= plural_table_name %></h1>
 </div>
 
 <div class="table-responsive">
@@ -11,7 +11,7 @@
     <thead>
       <tr>
     <% attributes.each do |attribute| -%>
-    <th><%= attribute.human_name %></th>
+        <th><%= attribute.human_name %></th>
     <% end -%>
         <th></th>
         <th></th>
@@ -22,7 +22,7 @@
     <tbody>
       <%%= content_tag_for(:tr, @<%= plural_table_name %>) do |<%= singular_table_name %>| %>
     <% attributes.each do |attribute| -%>
-    <td><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
+        <td><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
     <% end -%>
         <td><%%= link_to 'Show', <%= singular_table_name %> %></td>
         <td><%%= link_to 'Edit', edit_<%= singular_table_name %>_path(<%= singular_table_name %>) %></td>

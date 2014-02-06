@@ -5,7 +5,6 @@ class EntriesController < ApplicationController
   # GET /entries
   # GET /entries.json
   def index
-    @entry = Entry.running.first || Entry.new
   end
 
   # GET /entries/1
