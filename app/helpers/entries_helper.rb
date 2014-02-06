@@ -5,7 +5,7 @@ module EntriesHelper
   end
 
   def hours_for_day_billable(date)
-    Entry.bootstrapping.for_date(date).sum(:minutes) / 60
+    Entry.billable.for_date(date).sum(:minutes) / 60
   end
 
   def any_entries_for_day?(date)

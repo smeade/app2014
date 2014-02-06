@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
+ruby '2.0.0'
 
 gem 'rails',     github: 'rails/rails'
 gem 'arel',      github: 'rails/arel'
 
-# Use mysql as the database for Active Record
-gem 'mysql2'
+gem 'pg'
 
 # Use edge version of sprockets-rails
 gem 'sprockets-rails', github: 'rails/sprockets-rails'
@@ -44,6 +44,10 @@ end
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
+end
+
+group :production do
+	gem 'rails_12factor'
 end
 
 # Use ActiveModel has_secure_password
