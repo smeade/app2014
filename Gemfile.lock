@@ -138,6 +138,8 @@ GEM
     thread_safe (0.1.3)
       atomic
     tilt (1.4.1)
+    tinymce-rails (4.0.16)
+      railties (>= 3.1.1)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
@@ -170,5 +172,6 @@ DEPENDENCIES
   sass-rails!
   sdoc
   sprockets-rails!
+  tinymce-rails
   turbolinks
   uglifier (>= 1.3.0)

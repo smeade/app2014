@@ -1,0 +1,23 @@
+<div class="page-header">
+  <%= link_to new_note_path, :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Note
+  <% end %>
+  <h1>Notes</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Your Notes</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @notes) do |note| %>
+        <td><%= link_to note.subject, note %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

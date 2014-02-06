@@ -1,5 +1,7 @@
 App2014::Application.routes.draw do
 
+  resources :notes
+
   devise_for :users
   resource :dashboard
 

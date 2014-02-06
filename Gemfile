@@ -34,6 +34,7 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'font-awesome-sass'
 gem 'high_voltage'
+gem 'tinymce-rails'
 
 group :development do
   gem 'bootstrap-generators', '~> 3.0.2'
