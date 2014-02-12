@@ -1,6 +1,7 @@
 class EntriesController < ApplicationController
-  before_action :set_entry, only: [:show, :edit, :update, :destroy, :restart]
-  before_action :set_entries, only: [:index, :create, :restart]
+
+  before_action :set_entry, only: [:show, :edit, :update, :destroy, :start, :stop]
+  before_action :set_entries, only: [:index, :create, :start, :stop]
 
   # GET /entries
   # GET /entries.json
@@ -24,14 +25,14 @@ class EntriesController < ApplicationController
   # POST /entries
   # POST /entries.json
   def create
-    @entry = Entry.new(entry_params, date: Date.today())
+    @entry = Entry.new(entry_params.merge({date: Date.today()}))
 
     respond_to do |format|
       if @entry.save
         format.html { redirect_to @entry, notice: 'Entry was successfully created.' }
         format.js   { 
           @created_entry = @entry
-          @entry = Entry.new unless @entry.running
+          @entry = Entry.new
         }
         format.json { render action: 'show', status: :created, location: @entry }
       else
@@ -41,13 +42,18 @@ class EntriesController < ApplicationController
     end
   end
 
-  def restart
-    @entry_running = Entry.running.first
-    @entry_running.stop if @entry_running
-    
+  def start
     @entry.start
+    respond_to do |format|
+      format.js {}
+    end
+  end
 
-    render :index
+  def stop
+    Entry.running.each { |entry| entry.stop }
+    respond_to do |format|
+      format.js {}
+    end
   end
 
   # PATCH/PUT /entries/1
@@ -91,7 +97,7 @@ class EntriesController < ApplicationController
     end
 
     def set_entries
-      @entries_today = Entry.complete.today
+      @entries_today = Entry.today
       @entries_yesterday = Entry.complete.yesterday
       @entries_with_journal_text = Entry.with_journal_text      
     end

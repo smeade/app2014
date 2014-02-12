@@ -5,6 +5,6 @@ class ApplicationController < ActionController::Base
   before_action :set_timeline_entry
 
   def set_timeline_entry
-  	@entry = Entry.running.first || Entry.new
+  	@entry = Entry.new()
   end
 end

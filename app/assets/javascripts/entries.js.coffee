@@ -16,17 +16,20 @@ readyPage = ->
     else
       $(".entry-save").val("Save")
 
-  # If there is a running entry, start the clock at starting-seconds
-  current_seconds = $("#clocking").data("starting-seconds")
-  if current_seconds
+  # If there is a running entry, start the clock at startingseconds
+  current_minutes = $("#clocking").data("starting-minutes")
+  if current_minutes
     $('#runner').runner
       milliseconds: false
-      startAt: current_seconds * 1000
-
+      startAt: current_minutes * 60 * 1000
+      format: (value, oldFormatter) ->
+        ( (value / 1000) / 60 / 60 ).toFixed(2)
     $('#runner').runner('start')
   else
     $('#runner').runner
       milliseconds: false
+      format: (value, oldFormatter) ->
+        ( (value / 1000) / 60 / 60 ).toFixed(2)
 
   # show/hide edit/delete links
   $("tr.entry").hover (->

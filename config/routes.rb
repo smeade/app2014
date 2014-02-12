@@ -7,7 +7,8 @@ App2014::Application.routes.draw do
 
   resources :entries do
     member do 
-      put 'restart'
+      put 'start'
+      put 'stop'
     end
   end
 
