@@ -4,7 +4,7 @@ ruby '2.0.0'
 gem 'rails',     github: 'rails/rails'
 gem 'arel',      github: 'rails/arel'
 
-gem 'pg'
+gem 'mysql2'
 
 # Use edge version of sprockets-rails
 gem 'sprockets-rails', github: 'rails/sprockets-rails'
@@ -57,7 +57,8 @@ end
 # gem 'unicorn'
 
 # Use Capistrano for deployment
-# gem 'capistrano', group: :development
+gem 'capistrano', '>= 2.15.1', group: :development
+gem 'rvm-capistrano'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
