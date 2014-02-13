@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20140207224031) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "clients", force: true do |t|
     t.string   "name"
     t.text     "address"
@@ -76,10 +73,10 @@ ActiveRecord::Schema.define(version: 20140207224031) do
     t.integer  "client_id"
     t.string   "name"
     t.string   "code"
-    t.boolean  "billable",   default: true
-    t.decimal  "budget"
+    t.boolean  "billable",                            default: true
+    t.decimal  "budget",     precision: 10, scale: 0
     t.text     "notes"
-    t.boolean  "active",     default: true
+    t.boolean  "active",                              default: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
