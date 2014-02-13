@@ -35,6 +35,5 @@ production:
   database: app2014_production
   pool: 5
   username: root
-  password:
+  password: atyuijhnikwkehighijn7789hhjh7
   #socket: /tmp/mysql.sock
-
